@@ -10,6 +10,11 @@ const ProfilePage = () => {
     const file = e.target.files[0];
     if (!file) return;
 
+    const maxFileSize = 3 * 1024 * 1024; // 5 MB
+    if (file.size > maxFileSize) {
+      alert("File size exceeds the 5 MB limit.");
+      return;
+    }
     const reader = new FileReader();
 
     reader.readAsDataURL(file);
